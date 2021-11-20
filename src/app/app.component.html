@@ -1,6 +1,4 @@
-<h1 style="text-align: center; font-size: 80px">
-  DISATTIVAZIONE_ARMAMENTO_ORDIGNI
-</h1>
+<h1 style="text-align: center">DISATTIVAZIONE_ARMAMENTO_ORDIGNI</h1>
 <div
   [ngStyle]="{
     border:
@@ -37,6 +35,7 @@
   </button>
   <br />
   <span
+    style="font-size: 50px"
     [ngStyle]="{
       color:
         remaining == 3
@@ -47,7 +46,6 @@
           ? 'red '
           : 'black'
     }"
-    style="font-size: 80px"
     >{{ remaining }}_TENTATIVI_RIMASTI</span
   >
 </div>
