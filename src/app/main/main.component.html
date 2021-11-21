@@ -1,0 +1,87 @@
+<div *ngIf="hideall == false">
+  <video
+    *ngIf="partiLoop == false"
+    autoplay
+    muted
+    id="myVideo"
+    (ended)="onEnded()"
+    style="width: 100%"
+  >
+    <source src="../assets/1st.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <video *ngIf="partiLoop" style="width: 100%" autoplay muted loop id="myVideo">
+    <source src="../assets/loop.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <div
+    style="
+      background-color: rgb(0, 0, 0);
+      position: absolute;
+      margin-top: 17%;
+      margin-left: 7.5rem;
+      zoom: 80%;
+      width: fit-content;
+    "
+  >
+    <h1 style="text-align: center; color: #61d2f1">PANNELLO DI CONTROLLO</h1>
+    <small style="text-align: center; color: #61d2f1"
+      >INSERISCI IL GIUSTO SET DI CODICI PER ACCEDERE</small
+    >
+    <div
+      style="width: 500px"
+      [ngStyle]="{
+        border:
+          remaining == 3
+            ? '3px solid #61d2f1 '
+            : remaining == 2
+            ? '3px solid yellow '
+            : remaining == 1
+            ? '3px solid red '
+            : null
+      }"
+    >
+      <textarea
+        placeholder="CODICE"
+        style="
+          width: 200px;
+          height: 100px;
+          background-color: black;
+          color: rgb(255, 255, 255);
+          font-family: 'Courier New', Courier, monospace;
+        "
+        [formControl]="deactivationCode"
+      ></textarea>
+      <br />
+      <button
+        type="button"
+        style="width: 100px; font-family: 'Courier New', Courier, monospace"
+        (click)="confirmCode()"
+        [disabled]="deactivationCode.value == ''"
+      >
+        CONFERMA
+      </button>
+      <br />
+      <span
+        style="font-size: 30px"
+        [ngStyle]="{
+          color:
+            remaining == 3
+              ? '#61d2f1 '
+              : remaining == 2
+              ? 'yellow '
+              : remaining == 1
+              ? 'red '
+              : 'black'
+        }"
+        >{{ remaining }} TENTATIVI RIMASTI</span
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="hideall == true">
+  <video autoplay muted loop id="myVideo">
+    <source src="../assets/zeb.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+</div>
